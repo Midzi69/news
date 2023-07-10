@@ -229,6 +229,8 @@
         </div>
     </div>
 
+
+
     <div class="row mb-2">
         <?php
 
@@ -288,6 +290,42 @@
             <h3 class="pb-4 mb-4 fst-italic border-bottom">
                 From the Firehose
             </h3>
+
+            <?php
+
+            $xml = simplexml_load_file("http://blog.b92.net/rss/feed/index.xml");
+            foreach($xml->channel->item as $itm) {
+                $title = $itm->title;
+                $link = $itm ->link;
+                $description = $itm->description;
+                $date = $itm->pubDate;
+                #echo '<li class="list-group-item"><a href=" .$link. ">' .$title. '</a> <hr> '.$description.' <br> '.$date.'</li>';
+                echo '
+                
+                    <article class="blog-post">
+                <h2 class="display-5 link-body-emphasis mb-1"><a href="'.$link.'">'.$title.'</h2>
+                <p class="blog-post-meta">'.$date.'</a></p>
+
+                
+                <hr>
+
+                <blockquote class="blockquote">
+                    '.$description.'
+
+                </blockquote>
+                <hr>
+
+            </article>
+                
+                ';
+            }
+
+            #echo '</ul>';
+
+            ?>
+
+
+
 
                 <?php
 
