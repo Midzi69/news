@@ -17,10 +17,11 @@ session_start();
                 integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
         </script>
 
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script> -->
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
     </head>
     <body>
@@ -40,15 +41,20 @@ session_start();
                                 <option value="">Select Country:</option>
                                 <?php
 
-                                    include('db/connection.php');
-                                    $query = mysqli_query($conn, "select * from country");
-                                    while($row=mysqli_fetch_array($query)) {
-                                        ?>
-                                        <option value="<?php echo $row['country'];?>"><?php echo $row['country'];?></option>
-                                        <?php
-                                    }
+                                include('db/connection.php');
+                                $query= "select * from country";
+                                $result= mysqli_query($conn,$query);
+                                while ($row= mysqli_fetch_array($result)) { ?>
+                                    <option value="<?php echo $row['id']; ?>"><?php echo $row['country'] ?></option>
+                                <?php } ?>
 
-                                ?>
+
+
+
+                            </select>
+                            <select class="form-select" aria-label="Default select example" name="state" id="state" style="margin-top: 24px">
+                                <option value="">Select State:</option>
+
                             </select>
                             <select class="form-select" aria-label="Default select example" name="gender" id="gender" style="margin-top: 24px">
                                 <option value="">Select Gender:</option>
@@ -76,17 +82,39 @@ session_start();
 
     </body>
     </html>
+    <script>
+        $(document).ready(function() {
+
+            $("#country").change(function () {
+                var country_id = this.value;
+                $.ajax({
+                    url: "ajax.php",
+                    type: "POST",
+                    data: {
+                        country_id: country_id
+                    },
+                    cache: false,
+                    success: function (result) {
+                        $("#state").html(result);
+                    }
+                });
+            });
+        });
+
+    </script>
 
 <?php
 include('db/connection.php');
 if(isset($_POST['submit'])) {
+
     $name = $_POST['name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $date = $_POST['date'];
     $country = $_POST['country'];
+    $state = $_POST['state'];
     $gender = $_POST['gender'];
-    $query1 = mysqli_query($conn, "insert into admin_login(name,email, password,date,country,gender)values('$name','$email', '$password','$date','$country','$gender')");
+    $query1 = mysqli_query($conn, "insert into admin_login(name,email, password,date,country,state,gender)values('$name','$email', '$password','$date','$country','$state','$gender')");
 
     if($query1) {
         echo "<script>alert(`Account Created!`);</script>";
