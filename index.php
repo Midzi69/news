@@ -68,6 +68,19 @@
                 From the Firehose
             </h3>
 
+
+            <?php
+            # VESTI SA YAHOO NEWS
+            include('yahoo_vesti.php');
+
+            ?>
+
+            <?php
+                # VESTI SA N1
+                include('n1_vesti.php');
+
+            ?>
+
             <?php
 
             #VESTI SA B92
