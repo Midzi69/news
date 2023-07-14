@@ -1,7 +1,7 @@
 <div class="row mb-2">
         <?php
 
-        include ('db/connection.php');
+
         $query1 = mysqli_query($conn, "select * from news limit 1,2");
         while($row = mysqli_fetch_array($query1)) {
                 $category = $row['category'];
