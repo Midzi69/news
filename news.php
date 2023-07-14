@@ -31,7 +31,7 @@ include('include/header.php');
             </tr>
             <?php
 
-            include('db/connection.php');
+
                 $page = $_GET['page'];
                # if ($page=="" || $page=="1"){
                #     $page1 = 0;
