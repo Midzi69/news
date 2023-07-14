@@ -1,6 +1,6 @@
 <?php
 
-    include ('db/connection.php');
+    require_once 'vendor/autoload.php';
     $id = $_GET['del'];
     $query = mysqli_query($conn, "delete from news where id='$id'");
     if($query) {
