@@ -13,7 +13,7 @@ include('include/header.php');
 
     <?php
 
-        include('db/connection.php');
+
         $id=$_GET['edit'];
 
         $query=mysqli_query($conn, "select * from category where id='$id'");
@@ -57,7 +57,7 @@ include('include/header.php');
     </div>
 
 <?php
-include('db/connection.php');
+
 if (isset($_POST['submit'])){
     $id = $_POST['id'];
     $category = $_POST['category'];
