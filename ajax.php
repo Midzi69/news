@@ -1,5 +1,5 @@
 <?php
-include('db/connection.php');
+require_once 'vendor/autoload.php';
 
 $country_id = $_POST['country_id'];
 $query= "select * from state where country_id='".$country_id."' ";
