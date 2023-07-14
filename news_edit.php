@@ -13,7 +13,7 @@ include('include/header.php');
 
 <?php
 
-    include ('db/connection.php');
+
     $id = $_GET['edit'];
     $query = mysqli_query($conn, "select * from news where id = '$id'");
     while($row=mysqli_fetch_array($query)) {
@@ -71,7 +71,7 @@ include('include/header.php');
             <select class="form-control" name="category">
                 <?php
 
-                include ('db/connection.php');
+
 
                 $query=mysqli_query($conn, "select * from category");
                 while($row = mysqli_fetch_array($query)) {
@@ -121,7 +121,7 @@ include('include/footer.php');
 
 <?php
 
-    include ('db/connection.php');
+
 
     if(isset($_POST['submit'])) {
         $id = $_POST['id'];
