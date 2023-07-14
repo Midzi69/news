@@ -3,6 +3,7 @@
     #HEADER
     include('include/index_header.php');
 
+
 ?>
 
 <div class="container">
@@ -31,7 +32,6 @@
         <nav class="nav nav-underline justify-content-between">
             <?php
 
-            include('db/connection.php');
             $query1 = mysqli_query($conn, "select * from category");
             while($row=mysqli_fetch_array($query1)){
 
@@ -70,14 +70,9 @@
 
 
             <?php
-            # VESTI SA YAHOO NEWS
-            include('yahoo_vesti.php');
 
-            ?>
-
-            <?php
-                # VESTI SA N1
-                include('n1_vesti.php');
+            #VEST
+            include ('vest.php');
 
             ?>
 
@@ -89,13 +84,22 @@
             ?>
 
 
-
             <?php
-
-                #VEST
-                include ('vest.php');
+            # VESTI SA YAHOO NEWS
+            include('yahoo_vesti.php');
 
             ?>
+
+            <?php
+                # VESTI SA N1
+                include('n1_vesti.php');
+
+            ?>
+
+
+
+
+
 
 
 
@@ -119,7 +123,6 @@
                     <ol class="list-unstyled mb-0">
                         <?php
 
-                            include('db/connection.php');
                             $query1 = mysqli_query($conn, "select * from category");
                             while($row=mysqli_fetch_array($query1)){
 
