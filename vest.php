@@ -1,6 +1,5 @@
 <?php
 
-include ('db/connection.php');
 error_reporting(0);
 $page = $_GET['page'];
 
