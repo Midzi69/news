@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+require_once 'vendor/autoload.php';
 
 ?>
 
@@ -41,7 +42,7 @@ session_start();
                                 <option value="">Select Country:</option>
                                 <?php
 
-                                include('db/connection.php');
+
                                 $query= "select * from country";
                                 $result= mysqli_query($conn,$query);
                                 while ($row= mysqli_fetch_array($result)) { ?>
@@ -60,7 +61,7 @@ session_start();
                                 <option value="">Select Gender:</option>
                                 <?php
 
-                                include('db/connection.php');
+
                                 $query = mysqli_query($conn, "select * from gender");
                                 while($row=mysqli_fetch_array($query)) {
                                     ?>
@@ -104,16 +105,16 @@ session_start();
     </script>
 
 <?php
-include('db/connection.php');
+
 if(isset($_POST['submit'])) {
 
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $date = $_POST['date'];
-    $country = $_POST['country'];
-    $state = $_POST['state'];
-    $gender = $_POST['gender'];
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $date = mysqli_real_escape_string($conn, $_POST['date']);
+    $country = mysqli_real_escape_string($conn, $_POST['country']);
+    $state = mysqli_real_escape_string($conn, $_POST['state']);
+    $gender = mysqli_real_escape_string($conn, $_POST['gender']);
     $query1 = mysqli_query($conn, "insert into admin_login(name,email, password,date,country,state,gender)values('$name','$email', '$password','$date','$country','$state','$gender')");
 
     if($query1) {
