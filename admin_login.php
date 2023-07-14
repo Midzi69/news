@@ -1,7 +1,7 @@
 <?php
 
     session_start();
-
+    require_once 'vendor/autoload.php';
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +53,6 @@
 </html>
 
 <?php
-include('db/connection.php');
     if(isset($_POST['submit'])) {
         $email=$_POST['email'];
        $password=$_POST['password'];
