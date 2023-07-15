@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2023 at 04:45 PM
+-- Generation Time: Jul 15, 2023 at 11:57 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -45,7 +45,8 @@ CREATE TABLE `admin_login` (
 INSERT INTO `admin_login` (`id`, `name`, `email`, `password`, `date`, `country`, `state`, `gender`) VALUES
 (1, 'milos', 'milostordai@gmail.com', '123456', '0000-00-00', '', '', ''),
 (6, 'Milos Tordai', 'milostordai@gmail.com', '123456', '2005-01-02', 'Serbia', '', 'Male'),
-(8, 'tosa', 'tosa@tnnw.bfth', '1234576', '2023-07-11', '1', '1', 'Male');
+(8, 'tosa', 'tosa@tnnw.bfth', '1234576', '2023-07-11', '1', '1', 'Male'),
+(9, 'Milos Tordai', 'milostordai@gmail.com', '1234567', '2023-07-02', '1', '1', 'Male');
 
 -- --------------------------------------------------------
 
@@ -71,6 +72,25 @@ INSERT INTO `category` (`id`, `category_name`, `des`) VALUES
 (19, 'Technology', 'Technology'),
 (20, 'Politics', 'Politics'),
 (21, 'Health', 'Health');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comment`
+--
+
+CREATE TABLE `comment` (
+  `id` int(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `comment` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`id`, `name`, `comment`) VALUES
+(2, 'Milos', 'Test Comment');
 
 -- --------------------------------------------------------
 
@@ -181,6 +201,12 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `country`
 --
 ALTER TABLE `country`
@@ -212,13 +238,19 @@ ALTER TABLE `state`
 -- AUTO_INCREMENT for table `admin_login`
 --
 ALTER TABLE `admin_login`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `country`
@@ -236,7 +268,7 @@ ALTER TABLE `gender`
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `state`
