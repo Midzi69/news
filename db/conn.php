@@ -6,7 +6,7 @@ require_once 'Class/Connection.php';
 
 use app\DatabaseConnection;
 
-$database = new DatabaseConnection("localhost", "root", "", "newss");
+$database = new DatabaseConnection("localhost", "root", "", "news");
 $conn = $database->getConnection();
 
 ?>
