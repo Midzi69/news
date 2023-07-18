@@ -1,7 +1,8 @@
 {
   "autoload": {
     "files": [
-      "db/connection.php"
+      "db/conn.php"
+      
     ]
   }
 }
