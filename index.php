@@ -1,4 +1,3 @@
-
 <?php
     #HEADER
     include('include/index_header.php');
@@ -31,7 +30,6 @@
 
         <nav class="nav nav-underline justify-content-between">
             <?php
-
             $query1 = mysqli_query($conn, "select * from category");
             while($row=mysqli_fetch_array($query1)){
 
@@ -141,3 +139,7 @@
                 include('include/index_footer.php');
 
                 ?>
+
+
+
+
