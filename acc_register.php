@@ -27,59 +27,17 @@ require_once 'vendor/autoload.php';
     </head>
     <body>
 
-    <div class="container mt-5 pt-5">
-        <div class="row">
-            <div class="col-12 col-sm8 col-md6 m-auto">
-                <div class="card border-0 shadow">
-                    <div class="card-body">
-                        <h1>REGISTRATION</h1>
-                        <form action="acc_register.php" method="post">
-                            <input type="text" name="name" class="form-control my-4 py-2" id="name" placeholder="Name: ">
-                            <input type="email" name="email" class="form-control my-4 py-2" id="email" placeholder="Email: ">
-                            <input type="password" name="password" class="form-control my-4 py-2" id="pwd" placeholder="Password: ">
-                            <input type="date" name="date" class="form-control" id="email" placeholder="Birth Date">
-                            <select class="form-select" aria-label="Default select example" name="country" id="country" style="margin-top: 24px">
-                                <option value="">Select Country:</option>
-                                <?php
+        <?php 
+        #REGISTRATION FORM
+
+        require 'Class/AccRegister.php';
+
+        $registrationForm = new RegistrationForm($conn);
+        $formHTML = $registrationForm->generateForm();
+        echo $formHTML;
 
 
-                                $query= "select * from country";
-                                $result= mysqli_query($conn,$query);
-                                while ($row= mysqli_fetch_array($result)) { ?>
-                                    <option value="<?php echo $row['id']; ?>"><?php echo $row['country'] ?></option>
-                                <?php } ?>
-
-
-
-
-                            </select>
-                            <select class="form-select" aria-label="Default select example" name="state" id="state" style="margin-top: 24px">
-                                <option value="">Select State:</option>
-
-                            </select>
-                            <select class="form-select" aria-label="Default select example" name="gender" id="gender" style="margin-top: 24px">
-                                <option value="">Select Gender:</option>
-                                <?php
-
-
-                                $query = mysqli_query($conn, "select * from gender");
-                                while($row=mysqli_fetch_array($query)) {
-                                    ?>
-                                    <option value="<?php echo $row['gender'];?>"><?php echo $row['gender'];?></option>
-                                    <?php
-                                }
-
-                                ?>
-                            </select>
-                            <div class="text-center mt-3">
-                                <input type="submit" name="submit" class="btn btn-primary" value="Register">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        ?>
 
     </body>
     </html>
