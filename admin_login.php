@@ -53,23 +53,11 @@
 </html>
 
 <?php
-    if(isset($_POST['submit'])) {
-        $email=$_POST['email'];
-       $password=$_POST['password'];
 
-       $query=mysqli_query($conn, "select * from admin_login where email='$email' AND password='$password' ");
+    require 'Class/User.php';
 
-       if($query) {
-        if(mysqli_num_rows($query) > 0) {
-           $_SESSION['email']=$email;
-
-
-            header('location:home.php');
-        } else {
-            echo "<script> alert(`Invalid email or password!`);</script>";
-        }
-       }
-    }
-
+    $user = new User($conn);
+    $formHTML = $user->login();
+    echo $formHTML;
 
 ?>
