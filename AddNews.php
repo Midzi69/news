@@ -21,51 +21,14 @@ include('include/header.php');
             </ul>
         </div>
 
-        <form action="AddNews.php" method="post" name="categoryform" enctype="multipart/form-data" onsubmit=" return validate() ">
-            <h1>Add News</h1>
-
-            <div class="mb-3">
-                <label for="email" class="form-label">Title: </label>
-                <input type="text" name="title" class="form-control" id="email" placeholder="Enter Title: ">
-            </div>
-            <div class="mb-3">
-                <label for="comment">Description: </label>
-                <textarea class="form-control" name="description" rows="5" id="comment" placeholder="Enter Description: "></textarea>
-            </div>
-
-            <div class="mb-3">
-                <label for="email" class="form-label">Date: </label>
-                <input type="date" name="date" class="form-control" id="email" >
-            </div>
-
-            <div class="mb-3">
-                <label for="email" class="form-label">Thumbnail: </label>
-                <input type="file" name="thumbnail" class="form-control img-thumbnail" id="email" >
-            </div>
+            <?php
+            error_reporting(0);
+            require_once 'Class/Vest.php';
+            $newsForm = new NewsPage($conn, $_GET['page']);
+            $newsForm->create();
 
 
-
-            <div class="mb-3">
-                <label for="email" class="form-label">Choose Category: </label>
-
-
-
-                <select class="form-control" name="category">
-                    <?php
-
-
-
-                    $query=mysqli_query($conn, "select * from category");
-                    while($row = mysqli_fetch_array($query)) {
-                        ?>
-                        <option value="<?php echo $row['category_name']; ?>"><?php echo $row['category_name']; ?></option>
-                    <?php } ?>
-
-                </select>
-            </div>
-
-            <input type="submit" name="submit" class="btn btn-primary" value="Add News">
-        </form>
+            ?>
 
         <script>
 
@@ -105,12 +68,12 @@ include('include/footer.php');
 
 
 if(isset($_POST['submit'])) {
-    $title = $_POST['title'];
-    $description = $_POST['description'];
-    $date = $_POST['date'];
+    $title = mysqli_real_escape_string($conn, $_POST['title']);
+    $description = mysqli_real_escape_string($conn, $_POST['description']);
+    $date = mysqli_real_escape_string($conn, $_POST['date']);
     $thumbnail = $_FILES['thumbnail']['name'];
     $tmp_thumbnail = $_FILES['thumbnail']['tmp_name'];
-    $category = $_POST['category'];
+    $category = mysqli_real_escape_string($conn, $_POST['category']);
     move_uploaded_file($tmp_thumbnail, "img/$thumbnail");
 
     $query1 = mysqli_query($conn, "insert into news(title, description, date,category,thumbnail)values('$title', '$description', '$date', '$category', '$thumbnail')");
