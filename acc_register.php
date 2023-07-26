@@ -30,10 +30,10 @@ require_once 'vendor/autoload.php';
         <?php 
         #REGISTRATION FORM
 
-        require 'Class/AccRegister.php';
+        require 'Class/User.php';
 
-        $registrationForm = new RegistrationForm($conn);
-        $formHTML = $registrationForm->generateForm();
+        $register = new User($conn);
+        $formHTML = $register->register();
         echo $formHTML;
 
 
