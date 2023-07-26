@@ -2,7 +2,7 @@
 #require_once 'vendor/autoload.php';
 require_once 'db/conn.php';
 
-$country_id = $_POST['country_id'];
+$country_id = mysqli_real_escape_string($conn, $_POST['country_id']); 
 $query= "select * from states where country_id='".$country_id."' ";
 $result= mysqli_query($conn,$query);
 
