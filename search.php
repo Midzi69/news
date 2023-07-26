@@ -99,11 +99,11 @@
 
 
                 if(isset($_POST['submit'])) {
-                    $search = $_POST['search'];
+                    $search = mysqli_real_escape_string($conn, $_POST['search']);
                     $query = mysqli_query($conn, "select * from news where title like '%$search%'");
                     while ($row = mysqli_fetch_array($query)){
 
-                    $title = $row['title'];
+                    $title = $row['title']; 
                     $date = $row['date'];
                     $thumbnail = $row['thumbnail'];
                     $description = $row['description'];
