@@ -43,33 +43,13 @@ validate.validate();
 
 ?>
 
-<?php  
+<?php
 
 
 
-if(isset($_POST['submit'])){
-    $category_name=$_POST['category'];
-    $des=$_POST['des'];
-
-    $check = mysqli_query($conn, "select * from category where category_name='$category_name'");
-
-    if(mysqli_num_rows($check)>0) {
-        echo "<script> alert(`Category name already taken!`); </script>";
-
-        exit();
-    }
-
-        $query=mysqli_query($conn, "insert into category(category_name,des)values('$category_name','$des')");
-
-        if($query){
-            echo "<script> alert(`Category Added`)  </script>";
-
-
-        } else {
-            echo "<script> alert(`Please try again`)  </script>";
-        }
-
-    }
+    require_once 'Class/Category.php';
+    $newsForm = new Category($conn);
+    $newsForm->add($conn);
 
 
 
