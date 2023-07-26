@@ -1,14 +1,9 @@
 <?php
 
     require_once 'vendor/autoload.php';
-    $id = $_GET['del'];
-    $query = mysqli_query($conn, "delete from news where id='$id'");
-    if($query) {
-        echo "<script>alert(`News deleted successfully!`);</script>";
-        echo "<script >window.location = 'news.php';</script>";
-    } else {
-        echo "<script>alert(`Try again!`);</script>";
-    }
+    require_once 'Class/Vest.php';
+    $newsForm = new NewsPage($conn, $_GET['page']);
+    $newsForm->delete($conn);
 
 
 ?>
