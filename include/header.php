@@ -234,7 +234,7 @@
         <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2 active <?php if($page=='home'){echo 'active';} ?>" aria-current="page" href="home.php">
+              <a class="nav-link d-flex align-items-center gap-2 active <?php if($page=='home'){echo 'active';} ?>" aria-current="page" href="/home">
                 <svg class="bi"><use xlink:href="#house-fill"/></svg>
                 Dashboard
               </a>
